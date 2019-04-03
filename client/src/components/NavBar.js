@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import {
     Responsive,
     Visibility,
@@ -17,7 +18,16 @@ const getWidth = () => {
 };
 
 class DesktopNavBar extends Component {
-    state = { activeItem: 'home' };
+    state = { 
+        menuItems: [
+            'home',
+            'media',
+            'music',
+            'video',
+            'merch'
+        ],
+        activeItem: null
+    };
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
@@ -26,7 +36,6 @@ class DesktopNavBar extends Component {
 
     render() {
         const { fixed } = this.state;
-        const { activeItem } = this.state;
 
         return (
             <div>
@@ -50,26 +59,29 @@ class DesktopNavBar extends Component {
                                 size='large'
                             >
                                 <Container>
-                                    <Menu.Item name="home" active={activeItem === 'home'} onClick={this.handleItemClick} />
-                                    <Menu.Item name='media' active={activeItem === 'media'} onClick={this.handleItemClick} />
-                                    <Menu.Item name='music' active={activeItem === 'music'} onClick={this.handleItemClick} />
-                                    <Menu.Item name='video' active={activeItem === 'video'} onClick={this.handleItemClick} />
-                                    <Menu.Item name='merch' active={activeItem === 'merch'} onClick={this.handleItemClick} />
-                                    <Menu.Item position='right'>
-                                        <Button as='a' inverted={!fixed}>
-                                            Log in
-                                        </Button>
-                                        <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>
-                                            Sign Up
-                                        </Button>
-                                    </Menu.Item>
+                                    <Router>
+                                        {this.state.menuItems.map(menuItem =>
+                                            <a href={menuItem}><Menu.Item name={menuItem} active={this.state.activeItem === menuItem} onClick={this.handleItemClick} /></a>
+                                        )}
+
+                                        {/* TODO: add social media links to right side of nav bar */}
+
+                                        {/* <Menu.Item position='right'>
+                                            <Button as='a' inverted={!fixed}>
+                                                Log in
+                                            </Button>
+                                            <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>
+                                                Sign Up
+                                            </Button>
+                                        </Menu.Item> */}
+                                    </Router>
                                 </Container>
                             </Menu>
                         </Segment>
                     </Visibility>
                 </Responsive>
             </div>
-        )
+        );
     }
 }
 
@@ -130,7 +142,7 @@ class MobileNavBar extends Component {
                 </Segment>
             </Sidebar.Pusher>
         </Responsive>
-      )
+      );
     }
   }
 

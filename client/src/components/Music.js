@@ -1,27 +1,19 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
     Container,
     List
 } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { getMusic } from '../actions/musicActions';
 
 class Music extends Component {
-    state = {
-        songs: [
-            {
-                title: "Red Light",
-                album: "Red Light",
-                year: 2018
-            }, {
-                title: "My City",
-                album: "Elevated Mindstate",
-                year: 2017
-            }
-        ]
+    componentDidMount() {
+        this.props.getMusic();
     }
 
     render() {
-        const { songs } = this.state;
-
+        const songs = this.props.music.music;
         return (
             <div>
               <Container text>
@@ -42,4 +34,13 @@ class Music extends Component {
     }
 }
 
-export default Music;
+Music.propTypes = {
+    getMusic: PropTypes.func.isRequired,
+    music: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+    music: state.music
+})
+
+export default connect(mapStateToProps, { getMusic })(Music);

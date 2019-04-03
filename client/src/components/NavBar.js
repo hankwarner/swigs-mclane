@@ -26,7 +26,7 @@ class DesktopNavBar extends Component {
             'video',
             'merch'
         ],
-        activeItem: null
+        activeItem: 'home'
     };
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name });

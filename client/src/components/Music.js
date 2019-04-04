@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { getMusic } from '../actions/musicActions';
 
 class Music extends Component {
-    componentDidMount() {
+    componentWillMount() {
         this.props.getMusic();
     }
 

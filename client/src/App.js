@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 
 // React Router
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { DesktopNavBar, MobileNavBar } from './components/NavBar';
+import { Route, Switch } from "react-router-dom";
+import DesktopNavBar from './components/NavBar';
+import { MobileNavigationBar } from './components/NavBar';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -19,12 +20,12 @@ class App extends Component {
       <Provider store={store}>
         <div className="App">
           <DesktopNavBar />
-          <MobileNavBar />
-          <Router>
+          <MobileNavigationBar />
+          <Switch>
             <Route exact path="/" component={Landing} />
             <Route path="/home" component={Landing} />
             <Route path="/music" component={Music} />
-          </Router>
+          </Switch>
         </div>
       </Provider>
     );

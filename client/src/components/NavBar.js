@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+// import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import {
     Responsive,
     Visibility,
     Segment,
     Container,
     Menu,
-    Button,
     Sidebar,
     Icon
 } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { getMenuItems, setActiveMenuItem } from '../actions/menuActions';
 
 const getWidth = () => {
     const isSSR = typeof window === 'undefined'
@@ -18,63 +20,40 @@ const getWidth = () => {
 };
 
 class DesktopNavBar extends Component {
-    state = { 
-        menuItems: [
-            'home',
-            'media',
-            'music',
-            'video',
-            'merch'
-        ],
-        activeItem: 'home'
-    };
+    state = {};
 
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+    componentWillMount() {
+        this.props.getMenuItems();
+    }
 
-    hideFixedMenu = () => this.setState({ fixed: false });
-    showFixedMenu = () => this.setState({ fixed: true });
+    handleItemClick = (e, { name }) => {
+        this.props.setActiveMenuItem(name);
+    }
 
     render() {
-        const { fixed } = this.state;
-
+        const menuItems = this.props.menuItems;
+        
         return (
             <div>
-              <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}>
+                <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}>
                     <Visibility
                         once={false}
-                        onBottomPassed={this.showFixedMenu}
-                        onBottomPassedReverse={this.hideFixedMenu}
                     >
                         <Segment
                             inverted
                             textAlign='center'
-                            style={{ minHeight: 75, padding: '1em 0em' }}
+                            style={{ minHeight: 50, padding: '1em 0em' }}
                             vertical
                         >
                             <Menu
                                 fixed='top'
                                 inverted
-                                pointing={!fixed}
-                                secondary={!fixed}
                                 size='large'
                             >
                                 <Container>
-                                    <Router>
-                                        {this.state.menuItems.map(menuItem =>
-                                            <a href={menuItem}><Menu.Item name={menuItem} active={this.state.activeItem === menuItem} onClick={this.handleItemClick} /></a>
-                                        )}
-
-                                        {/* TODO: add social media links to right side of nav bar */}
-
-                                        {/* <Menu.Item position='right'>
-                                            <Button as='a' inverted={!fixed}>
-                                                Log in
-                                            </Button>
-                                            <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>
-                                                Sign Up
-                                            </Button>
-                                        </Menu.Item> */}
-                                    </Router>
+                                    {menuItems.map(menuItem =>
+                                        <Link to={`/${menuItem}`}><Menu.Item active={this.props.activeItem === menuItem} name={menuItem} onClick={(e, name) => this.handleItemClick(e, name)} /></Link>
+                                    )}
                                 </Container>
                             </Menu>
                         </Segment>
@@ -85,16 +64,19 @@ class DesktopNavBar extends Component {
     }
 }
 
-class MobileNavBar extends Component {
+class MobileNavBar extends DesktopNavBar {
     state = {}
+
+    componentDidMount() {
+        this.props.getMenuItems();
+    }
   
     handleSidebarHide = () => this.setState({ sidebarOpened: false })
     handleToggle = () => this.setState({ sidebarOpened: true })
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
   
     render() {
       const { sidebarOpened } = this.state
-      const { activeItem } = this.state
+      const menuItems = this.props.menuItems;
   
       return (
         <Responsive
@@ -104,17 +86,15 @@ class MobileNavBar extends Component {
         >
             <Sidebar
                 as={Menu}
-                animation='push'
+                animation='overlay'
                 inverted
                 onHide={this.handleSidebarHide}
                 vertical
                 visible={sidebarOpened}
             >
-                <Menu.Item name="home" active={activeItem === 'home'} onClick={this.handleItemClick} />
-                <Menu.Item name='media' active={activeItem === 'media'} onClick={this.handleItemClick} />
-                <Menu.Item name='music' active={activeItem === 'music'} onClick={this.handleItemClick} />
-                <Menu.Item name='video' active={activeItem === 'video'} onClick={this.handleItemClick} />
-                <Menu.Item name='merch' active={activeItem === 'merch'} onClick={this.handleItemClick} />
+                {menuItems.map(menuItem =>
+                    <Link to={`/${menuItem}`}><Menu.Item active={this.props.activeItem === menuItem} name={menuItem} onClick={(e, name) => this.handleItemClick(e, name)} /></Link>
+                )}
             </Sidebar>
   
             <Sidebar.Pusher dimmed={sidebarOpened}>
@@ -129,14 +109,6 @@ class MobileNavBar extends Component {
                             <Menu.Item onClick={this.handleToggle}>
                                 <Icon name='sidebar' />
                             </Menu.Item>
-                            <Menu.Item position='right'>
-                                <Button inverted>
-                                    Log in
-                                </Button>
-                                <Button inverted style={{ marginLeft: '0.5em' }}>
-                                    Sign Up
-                                </Button>
-                            </Menu.Item>
                         </Menu>
                     </Container>
                 </Segment>
@@ -144,9 +116,26 @@ class MobileNavBar extends Component {
         </Responsive>
       );
     }
-  }
-
-export {
-    DesktopNavBar,
-    MobileNavBar
 }
+
+// DesktopNavBar.propTypes = {
+//     getMenuItems: PropTypes.func.isRequired,
+//     menuItems: PropTypes.array,
+//     activeItem: PropTypes.string
+// }
+
+// MobileNavBar.propTypes = {
+//     getMenuItems: PropTypes.func.isRequired,
+//     menuItems: PropTypes.array,
+//     activeItem: PropTypes.string
+// }
+
+const mapStateToProps = (state) => ({
+    menuItems: state.menu.menuItems,
+    activeItem: state.menu.activeItem
+})
+
+export default connect(mapStateToProps, { getMenuItems, setActiveMenuItem })(DesktopNavBar);
+
+const MobileNavigationBar = connect(mapStateToProps, { getMenuItems, setActiveMenuItem })(MobileNavBar);
+export { MobileNavigationBar }

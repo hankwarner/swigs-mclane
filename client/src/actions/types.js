@@ -4,3 +4,4 @@ export const GET_MUSIC = 'GET_MUSIC';
 
 // Menu action types
 export const GET_MENU_ITEMS = 'GET_MENU_ITEMS';
+export const SET_ACTIVE_MENU_ITEM = 'SET_ACTIVE_MENU_ITEM';

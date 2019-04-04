@@ -19,7 +19,7 @@ export default (state = initialState, action) => {
         case GET_MUSIC:
             return {
                 ...state
-            }
+            };
         default:
             return state;
     }

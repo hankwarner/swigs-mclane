@@ -1,4 +1,4 @@
-import { GET_MENU_ITEMS } from '../actions/types';
+import { GET_MENU_ITEMS, SET_ACTIVE_MENU_ITEM } from '../actions/types';
 
 const initialState = {
     menuItems: [
@@ -7,8 +7,8 @@ const initialState = {
         'music',
         'video',
         'merch'
-    ]
-    // activeItem: 'home'
+    ],
+    activeItem: "home"
 }
 
 export default (state = initialState, action) => {
@@ -16,7 +16,12 @@ export default (state = initialState, action) => {
         case GET_MENU_ITEMS:
             return {
                 ...state
-            }
+            };
+        case SET_ACTIVE_MENU_ITEM:
+            return {
+                ...state,
+                activeItem: action.payload
+            };
         default:
             return state;
     }

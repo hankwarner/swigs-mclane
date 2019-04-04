@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 // React Router
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import DesktopNavBar from './components/NavBar';
 import { MobileNavigationBar } from './components/NavBar';
 
@@ -21,11 +21,11 @@ class App extends Component {
         <div className="App">
           <DesktopNavBar />
           <MobileNavigationBar />
-          <Router>
+          <Switch>
             <Route exact path="/" component={Landing} />
             <Route path="/home" component={Landing} />
             <Route path="/music" component={Music} />
-          </Router>
+          </Switch>
         </div>
       </Provider>
     );

@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import {
     Responsive,
     Visibility,
     Segment,
     Container,
     Menu,
-    Button,
     Sidebar,
     Icon
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { getMenuItems } from '../actions/menuActions';
+import { getMenuItems, setActiveMenuItem } from '../actions/menuActions';
 
 const getWidth = () => {
     const isSSR = typeof window === 'undefined'
@@ -22,11 +22,13 @@ const getWidth = () => {
 class DesktopNavBar extends Component {
     state = {};
 
-    componentDidMount() {
+    componentWillMount() {
         this.props.getMenuItems();
     }
 
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+    handleItemClick = (e, { name }) => {
+        this.props.setActiveMenuItem(name);
+    }
 
     render() {
         const menuItems = this.props.menuItems;
@@ -50,7 +52,7 @@ class DesktopNavBar extends Component {
                             >
                                 <Container>
                                     {menuItems.map(menuItem =>
-                                        <a href={menuItem}><Menu.Item name={menuItem} active={this.state.activeItem === menuItem} onClick={this.handleItemClick} /></a>
+                                        <Link to={`/${menuItem}`}><Menu.Item active={this.props.activeItem === menuItem} name={menuItem} onClick={(e, name) => this.handleItemClick(e, name)} /></Link>
                                     )}
                                 </Container>
                             </Menu>
@@ -62,7 +64,7 @@ class DesktopNavBar extends Component {
     }
 }
 
-class MobileNavBar extends Component {
+class MobileNavBar extends DesktopNavBar {
     state = {}
 
     componentDidMount() {
@@ -71,12 +73,10 @@ class MobileNavBar extends Component {
   
     handleSidebarHide = () => this.setState({ sidebarOpened: false })
     handleToggle = () => this.setState({ sidebarOpened: true })
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
   
     render() {
       const { sidebarOpened } = this.state
       const menuItems = this.props.menuItems;
-      const { activeItem } = this.state
   
       return (
         <Responsive
@@ -93,7 +93,7 @@ class MobileNavBar extends Component {
                 visible={sidebarOpened}
             >
                 {menuItems.map(menuItem =>
-                    <a href={menuItem}><Menu.Item name={menuItem} active={this.state.activeItem === menuItem} onClick={this.handleItemClick} /></a>
+                    <Link to={`/${menuItem}`}><Menu.Item active={this.props.activeItem === menuItem} name={menuItem} onClick={(e, name) => this.handleItemClick(e, name)} /></Link>
                 )}
             </Sidebar>
   
@@ -118,21 +118,24 @@ class MobileNavBar extends Component {
     }
 }
 
-DesktopNavBar.propTypes = {
-    getMenuItems: PropTypes.func.isRequired,
-    menuItems: PropTypes.array.isRequired
-}
+// DesktopNavBar.propTypes = {
+//     getMenuItems: PropTypes.func.isRequired,
+//     menuItems: PropTypes.array,
+//     activeItem: PropTypes.string
+// }
 
-MobileNavBar.propTypes = {
-    getMenuItems: PropTypes.func.isRequired,
-    menuItems: PropTypes.array.isRequired
-}
+// MobileNavBar.propTypes = {
+//     getMenuItems: PropTypes.func.isRequired,
+//     menuItems: PropTypes.array,
+//     activeItem: PropTypes.string
+// }
 
 const mapStateToProps = (state) => ({
-    menuItems: state.menu.menuItems
+    menuItems: state.menu.menuItems,
+    activeItem: state.menu.activeItem
 })
 
-export default connect(mapStateToProps, { getMenuItems })(DesktopNavBar);
+export default connect(mapStateToProps, { getMenuItems, setActiveMenuItem })(DesktopNavBar);
 
-const MobileNavigationBar = connect(mapStateToProps, { getMenuItems })(MobileNavBar);
+const MobileNavigationBar = connect(mapStateToProps, { getMenuItems, setActiveMenuItem })(MobileNavBar);
 export { MobileNavigationBar }

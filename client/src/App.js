@@ -3,7 +3,8 @@ import './App.css';
 
 // React Router
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { DesktopNavBar, MobileNavBar } from './components/NavBar';
+import DesktopNavBar from './components/NavBar';
+import { MobileNavigationBar } from './components/NavBar';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -19,7 +20,7 @@ class App extends Component {
       <Provider store={store}>
         <div className="App">
           <DesktopNavBar />
-          <MobileNavBar />
+          <MobileNavigationBar />
           <Router>
             <Route exact path="/" component={Landing} />
             <Route path="/home" component={Landing} />

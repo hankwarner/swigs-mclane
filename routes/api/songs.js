@@ -18,12 +18,19 @@ router.post('/', (req, res) => {
         artist: req.body.artist,
         title: req.body.title,
         album: req.body.album,
-        link: req.body.link,
+        soundcloudUrl: req.body.soundcloudUrl,
+        albumCoverUrl: req.body.albumCoverUrl,
         year: req.body.year,
         month: req.body.month
     })
 
     newSong.save().then(song => res.json(song));
 });
+
+router.delete('/:id', (req, res) => {
+    Song.findById(req.params.id)
+        .then(song => song.remove().then(() => res.json({ success: true })))
+        .catch(err => res.status(404).json({ success: false }));
+})
 
 module.exports = router;

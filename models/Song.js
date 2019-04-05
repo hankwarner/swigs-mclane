@@ -14,7 +14,10 @@ const SongSchema = new Schema({
     album: {
         type: String
     },
-    link: {
+    soundcloudUrl: {
+        type: String
+    },
+    albumCoverUrl: {
         type: String
     },
     year: {

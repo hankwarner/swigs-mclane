@@ -55,6 +55,15 @@ class DesktopNavBar extends Component {
                                         <Link to={`/${menuItem}`}><Menu.Item active={this.props.activeItem === menuItem} name={menuItem} onClick={(e, name) => this.handleItemClick(e, name)} /></Link>
                                     )}
                                 </Container>
+                                <Menu.Item position="right">
+                                    <a href="https://itunes.apple.com/us/artist/swigs-mclane/1300061776"><Icon name='apple' /></a>
+                                </Menu.Item>
+                                <Menu.Item position="right">
+                                    <a href="https://soundcloud.com/swigsmclane"><Icon name='soundcloud' /></a>
+                                </Menu.Item>
+                                <Menu.Item position="right">
+                                    <a href="https://open.spotify.com/artist/2pmvrHTpCslih7BtQ4Y9uc?si=s6rRz8O6SWikcHVqH3xkqw"><Icon name='spotify' /></a>
+                                </Menu.Item>
                             </Menu>
                         </Segment>
                     </Visibility>
@@ -108,6 +117,15 @@ class MobileNavBar extends DesktopNavBar {
                         <Menu inverted pointing secondary size='large'>
                             <Menu.Item onClick={this.handleToggle}>
                                 <Icon name='sidebar' />
+                            </Menu.Item>
+                            <Menu.Item position="right">
+                                <a href="https://itunes.apple.com/us/artist/swigs-mclane/1300061776"><Icon name='apple' /></a>
+                            </Menu.Item>
+                            <Menu.Item position="right">
+                                <a href="https://soundcloud.com/swigsmclane"><Icon name='soundcloud' /></a>
+                            </Menu.Item>
+                            <Menu.Item position="right">
+                                <a href="https://open.spotify.com/artist/2pmvrHTpCslih7BtQ4Y9uc?si=s6rRz8O6SWikcHVqH3xkqw"><Icon name='spotify' /></a>
                             </Menu.Item>
                         </Menu>
                     </Container>

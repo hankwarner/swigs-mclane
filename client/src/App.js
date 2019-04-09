@@ -21,11 +21,14 @@ class App extends Component {
         <div className="App">
           <DesktopNavBar />
           <MobileNavigationBar />
-          <Switch>
-            <Route exact path="/" component={Landing} />
-            <Route path="/home" component={Landing} />
-            <Route path="/music" component={Music} />
-          </Switch>
+          <div className="background">
+            <div className="background-overlay"></div>
+            <Switch>
+              <Route exact path="/" component={Landing} />
+              <Route path="/home" component={Landing} />
+              <Route path="/music" component={Music} />
+            </Switch>
+          </div>
         </div>
       </Provider>
     );

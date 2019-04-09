@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 import {
-    Container,
-    List,
+    Grid,
     Loader,
-    Divider,
-    Image
+    Image,
+    Icon,
+    Card,
+    Header
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { getMusic } from '../actions/musicActions';
@@ -22,34 +22,63 @@ class Music extends Component {
 
         return (
             <div>
-              <Container text>
-                <List>
-                    <List.Item>
+                <Grid>
+                    <Grid.Row centered>
+                        <Header as='h1' inverted color='grey' id="header">
+                            Singles
+                        </Header>
+                    </Grid.Row>
+                    <hr></hr>
+                    <Grid.Row centered columns={3}>
                         {songs.map((song) => (
-                            <div>
-                                <List.Content>
-                                    <Image src={images(song.albumCoverUrl)} size='medium' />
-                                </List.Content>
-                                <Divider hidden />
-                                <List.Content>{song.artist}</List.Content>
-                                <List.Content>{song.title}</List.Content>
-                                <List.Content>{song.album}</List.Content>
-                                <List.Content>{song.year}</List.Content>
-                            </div>
+                            <Grid.Column>
+                                <div className="singles">
+                                    <Card>
+                                        <Image href={song.soundcloudUrl} src={images(song.albumCoverUrl)} />
+                                        <Card.Content>
+                                            <Card.Header>{song.title}</Card.Header>
+                                            <Card.Meta>{song.artist}</Card.Meta>
+                                            <Card.Description>{song.album}</Card.Description>
+                                        </Card.Content>
+                                        <Card.Content extra>
+                                            <a href={song.soundcloudUrl}><Icon name='soundcloud' />Listen on Soundcloud</a>
+                                        </Card.Content>
+                                    </Card>
+                                </div>
+                            </Grid.Column>
                         ))}
-                        {this.props.loading ? <Loader active inline='centered' /> : null }
-                    </List.Item>
-                </List>
-              </Container>
+                    </Grid.Row>
+                    <Grid.Row centered>
+                        <Header as='h1' inverted color='grey' id="header">
+                            Albums
+                        </Header>
+                    </Grid.Row>
+                    <hr></hr>
+                    <Grid.Row centered columns={3}>
+                        {songs.map((song) => (
+                            <Grid.Column>
+                                <div className="singles">
+                                    <Card>
+                                        <Image href={song.soundcloudUrl} src={images(song.albumCoverUrl)} />
+                                        <Card.Content>
+                                            <Card.Header>{song.title}</Card.Header>
+                                            <Card.Meta>{song.artist}</Card.Meta>
+                                            <Card.Description>{song.album}</Card.Description>
+                                        </Card.Content>
+                                        <Card.Content extra>
+                                            <a href={song.soundcloudUrl}><Icon name='soundcloud' />Listen on Soundcloud</a>
+                                        </Card.Content>
+                                    </Card>
+                                </div>
+                            </Grid.Column>
+                        ))}
+                    </Grid.Row>
+                </Grid>
+                {this.props.loading ? <Loader active inline='centered' /> : null }
             </div>
         );
     }
 }
-
-// Music.propTypes = {
-//     getMusic: PropTypes.func.isRequired,
-//     music: PropTypes.object.isRequired
-// }
 
 const mapStateToProps = (state) => ({
     music: state.music,

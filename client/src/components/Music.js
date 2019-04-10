@@ -9,16 +9,20 @@ import {
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { getMusic } from '../actions/musicActions';
+import { getAlbums } from '../actions/albumActions';
 
 const images = require.context('../../public/images', true)
 
 class Music extends Component {
     componentWillMount() {
         this.props.getMusic();
+        this.props.getAlbums();
     }
 
     render() {
         const songs = this.props.music.music;
+        const albums = this.props.albums;
+        debugger;
 
         return (
             <div>
@@ -55,18 +59,18 @@ class Music extends Component {
                     </Grid.Row>
                     <hr></hr>
                     <Grid.Row centered columns={3}>
-                        {songs.map((song) => (
+                        {albums.map((album) => (
                             <Grid.Column>
                                 <div className="singles">
                                     <Card>
-                                        <Image href={song.soundcloudUrl} src={images(song.albumCoverUrl)} />
+                                        <Image href={album.soundcloudUrl} src={images(album.albumCoverUrl)} />
                                         <Card.Content>
-                                            <Card.Header>{song.title}</Card.Header>
-                                            <Card.Meta>{song.artist}</Card.Meta>
-                                            <Card.Description>{song.album}</Card.Description>
+                                            <Card.Header>{album.title}</Card.Header>
+                                            <Card.Meta>{album.artist}</Card.Meta>
+                                            <Card.Description>{album.songs}</Card.Description>
                                         </Card.Content>
                                         <Card.Content extra>
-                                            <a href={song.soundcloudUrl}><Icon name='soundcloud' />Listen on Soundcloud</a>
+                                            <a href={album.soundcloudUrl}><Icon name='soundcloud' />Listen on Soundcloud</a>
                                         </Card.Content>
                                     </Card>
                                 </div>
@@ -82,7 +86,8 @@ class Music extends Component {
 
 const mapStateToProps = (state) => ({
     music: state.music,
+    albums: state.albums,
     loading: state.loading
 })
 
-export default connect(mapStateToProps, { getMusic })(Music);
+export default connect(mapStateToProps, { getMusic, getAlbums })(Music);

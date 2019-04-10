@@ -1,0 +1,32 @@
+.background {
+    background-image: url('images/elevated_mindstate.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    z-index: -2;
+}
+
+.background-overlay {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
+.singles {
+    margin-top: 5%;
+}
+
+#header {
+    margin-top: 2%;
+}
+
+hr { 
+    width: 75%;
+}

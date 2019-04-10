@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
 // Create Schema
-const SongSchema = new Schema({
+const SingleSchema = new Schema({
     artist: {
         type: String,
         required: true
@@ -28,4 +28,4 @@ const SongSchema = new Schema({
     }
 });
 
-module.exports = Song = mongoose.model('song', SongSchema);
+module.exports = Single = mongoose.model('single', SingleSchema);

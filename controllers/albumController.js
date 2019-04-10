@@ -5,7 +5,9 @@ module.exports = {
     getAllAlbums(req, res) {
         Album.find()
             .sort({ year: -1 })
-            .then(albums => res.json(albums));
+            .then((albums) => {
+                res.json(albums)
+            });
     },
     
     addAlbum(req, res) {

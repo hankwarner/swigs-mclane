@@ -21,8 +21,7 @@ class Music extends Component {
 
     render() {
         const songs = this.props.music.music;
-        const albums = this.props.albums;
-        debugger;
+        const albums = this.props.albums.albums;
 
         return (
             <div>

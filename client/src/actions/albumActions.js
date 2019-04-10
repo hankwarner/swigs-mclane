@@ -3,7 +3,7 @@ import { GET_ALBUMS, ADD_ALBUM, DELETE_ALBUM, ALBUMS_LOADING } from './types';
 
 export const getAlbums = () => dispatch => {
     dispatch(setAlbumsLoading());
-    axios.get('/api/albums').then(res => 
+    axios.get('/api/albums').then(res =>
         dispatch({
             type: GET_ALBUMS,
             payload: res.data
@@ -17,7 +17,7 @@ export const addAlbum = (newAlbum) => dispatch => {
             type: ADD_ALBUM,
             payload: res.data
         })
-    })
+    });
 };
 
 export const deleteAlbum = id => dispatch => {
@@ -26,8 +26,8 @@ export const deleteAlbum = id => dispatch => {
             type: DELETE_ALBUM,
             payload: id
         })
-    })
-}
+    });
+};
 
 export const setAlbumsLoading = () => {
     return {

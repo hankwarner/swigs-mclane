@@ -7,8 +7,8 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case GET_ALBUMS:
-            return {
+        case GET_ALBUMS:    
+        return {
                 ...state,
                 albums: action.payload,
                 loading: false

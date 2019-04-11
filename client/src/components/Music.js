@@ -66,7 +66,7 @@ class Music extends Component {
                         return (
                             <Grid.Row columns={2} key={album._id}>
                                 <Grid.Column id="album-image" width={8}>
-                                    <Image src={images(album.albumCoverUrl)} />
+                                    <Image src={images(album.albumCoverUrl)} rounded />
                                 </Grid.Column>
                                 <Grid.Column width={8}>
                                     <List divided id="track-list" verticalAlign='middle'>

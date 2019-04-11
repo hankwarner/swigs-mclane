@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {
     Responsive,
@@ -51,18 +50,20 @@ class DesktopNavBar extends Component {
                                 size='large'
                             >
                                 <Container>
-                                    {menuItems.map(menuItem =>
-                                        <Link to={`/${menuItem}`}><Menu.Item active={this.props.activeItem === menuItem} name={menuItem} onClick={(e, name) => this.handleItemClick(e, name)} /></Link>
+                                    {menuItems.map((menuItem, index) =>
+                                        <Link to={`/${menuItem}`} key={index}>
+                                            <Menu.Item active={this.props.activeItem === menuItem} name={menuItem} onClick={(e, name) => this.handleItemClick(e, name)} />
+                                        </Link>
                                     )}
                                 </Container>
-                                <Menu.Item position="right">
-                                    <a href="https://itunes.apple.com/us/artist/swigs-mclane/1300061776"><Icon name='apple' /></a>
+                                <Menu.Item as="a" href="https://itunes.apple.com/us/artist/swigs-mclane/1300061776" position="right">
+                                    <Icon name='apple' />
                                 </Menu.Item>
-                                <Menu.Item position="right">
-                                    <a href="https://soundcloud.com/swigsmclane"><Icon name='soundcloud' /></a>
+                                <Menu.Item as="a" href="https://soundcloud.com/swigsmclane" position="right">
+                                    <Icon name='soundcloud' />
                                 </Menu.Item>
-                                <Menu.Item position="right">
-                                    <a href="https://open.spotify.com/artist/2pmvrHTpCslih7BtQ4Y9uc?si=s6rRz8O6SWikcHVqH3xkqw"><Icon name='spotify' /></a>
+                                <Menu.Item as="a" href="https://open.spotify.com/artist/2pmvrHTpCslih7BtQ4Y9uc?si=s6rRz8O6SWikcHVqH3xkqw" position="right">
+                                    <Icon name='spotify' />
                                 </Menu.Item>
                             </Menu>
                         </Segment>
@@ -101,8 +102,10 @@ class MobileNavBar extends DesktopNavBar {
                 vertical
                 visible={sidebarOpened}
             >
-                {menuItems.map(menuItem =>
-                    <Link to={`/${menuItem}`}><Menu.Item active={this.props.activeItem === menuItem} name={menuItem} onClick={(e, name) => this.handleItemClick(e, name)} /></Link>
+                {menuItems.map((menuItem,index) =>
+                    <Link to={`/${menuItem}`} key={index}>
+                        <Menu.Item active={this.props.activeItem === menuItem} name={menuItem} onClick={(e, name) => this.handleItemClick(e, name)} />
+                    </Link>
                 )}
             </Sidebar>
   
@@ -118,14 +121,14 @@ class MobileNavBar extends DesktopNavBar {
                             <Menu.Item onClick={this.handleToggle}>
                                 <Icon name='sidebar' />
                             </Menu.Item>
-                            <Menu.Item position="right">
-                                <a href="https://itunes.apple.com/us/artist/swigs-mclane/1300061776"><Icon name='apple' /></a>
+                            <Menu.Item as="a" href="https://itunes.apple.com/us/artist/swigs-mclane/1300061776" position="right">
+                                <Icon name='apple' />
                             </Menu.Item>
-                            <Menu.Item position="right">
-                                <a href="https://soundcloud.com/swigsmclane"><Icon name='soundcloud' /></a>
+                            <Menu.Item as="a" href="https://soundcloud.com/swigsmclane" position="right">
+                                <Icon name='soundcloud' />
                             </Menu.Item>
-                            <Menu.Item position="right">
-                                <a href="https://open.spotify.com/artist/2pmvrHTpCslih7BtQ4Y9uc?si=s6rRz8O6SWikcHVqH3xkqw"><Icon name='spotify' /></a>
+                            <Menu.Item href="https://open.spotify.com/artist/2pmvrHTpCslih7BtQ4Y9uc?si=s6rRz8O6SWikcHVqH3xkqw" position="right">
+                                <Icon name='spotify' />
                             </Menu.Item>
                         </Menu>
                     </Container>
@@ -135,18 +138,6 @@ class MobileNavBar extends DesktopNavBar {
       );
     }
 }
-
-// DesktopNavBar.propTypes = {
-//     getMenuItems: PropTypes.func.isRequired,
-//     menuItems: PropTypes.array,
-//     activeItem: PropTypes.string
-// }
-
-// MobileNavBar.propTypes = {
-//     getMenuItems: PropTypes.func.isRequired,
-//     menuItems: PropTypes.array,
-//     activeItem: PropTypes.string
-// }
 
 const mapStateToProps = (state) => ({
     menuItems: state.menu.menuItems,

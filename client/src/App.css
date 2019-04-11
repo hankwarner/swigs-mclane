@@ -30,3 +30,28 @@
 hr { 
     width: 75%;
 }
+
+#song-cards {
+    padding-left: 10%;
+}
+
+#album-image {
+    padding-left: 20%;
+    margin-bottom: 5%;
+}
+
+#track-list {
+    padding-top: 5%;
+}
+
+#track {
+    margin-bottom: 5%;
+}
+
+#track-title {
+    color: rgb(255, 255, 255);
+}
+
+#media-icons {
+    margin-right: 20%;
+}

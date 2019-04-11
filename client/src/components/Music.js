@@ -6,8 +6,7 @@ import {
     Icon,
     Card,
     Header,
-    List,
-    Container
+    List
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { getMusic } from '../actions/musicActions';
@@ -34,24 +33,26 @@ class Music extends Component {
                         </Header>
                     </Grid.Row>
                     <hr></hr>
-                    <Grid.Row centered columns={3}>
-                        {songs.map((song) => (
-                            <Grid.Column>
-                                <div className="singles">
-                                    <Card>
-                                        <Image href={song.soundcloudUrl} src={images(song.albumCoverUrl)} />
-                                        <Card.Content>
-                                            <Card.Header>{song.title}</Card.Header>
-                                            <Card.Meta>{song.artist}</Card.Meta>
-                                            <Card.Description>{song.album}</Card.Description>
-                                        </Card.Content>
-                                        <Card.Content extra>
-                                            <a href={song.soundcloudUrl}><Icon name='soundcloud' />Listen on Soundcloud</a>
-                                        </Card.Content>
-                                    </Card>
-                                </div>
-                            </Grid.Column>
-                        ))}
+                    <Grid.Row id="song-cards" centered columns={3}>
+                        {songs.map((song) => {
+                            return (
+                                <Grid.Column key={song._id}>
+                                    <div className="singles">
+                                        <Card>
+                                            <Image href={song.soundcloudUrl} src={images(song.albumCoverUrl)} />
+                                            <Card.Content>
+                                                <Card.Header>{song.title}</Card.Header>
+                                                <Card.Meta>{song.artist}</Card.Meta>
+                                                <Card.Description>{song.album}</Card.Description>
+                                            </Card.Content>
+                                            <Card.Content extra>
+                                                <a href={song.soundcloudUrl}><Icon name='soundcloud' />Listen on Soundcloud</a>
+                                            </Card.Content>
+                                        </Card>
+                                    </div>
+                                </Grid.Column>
+                            )
+                        })}
                     </Grid.Row>
                 </Grid>
                 <Grid>
@@ -63,17 +64,22 @@ class Music extends Component {
                     <hr></hr>
                     {albums.map(album => {
                         return (
-                            <Grid.Row columns={2}>
-                                <Grid.Column width={8}>
-                                    <Image href={album.soundcloudUrl} src={images(album.albumCoverUrl)} />
+                            <Grid.Row columns={2} key={album._id}>
+                                <Grid.Column id="album-image" width={8}>
+                                    <Image src={images(album.albumCoverUrl)} />
                                 </Grid.Column>
                                 <Grid.Column width={8}>
-                                    <List divided verticalAlign='middle'>
-                                        {album.songs.map(song => {
-                                            return (
-                                                <List.Item>
+                                    <List divided id="track-list" verticalAlign='middle'>
+                                        {album.songs.map((song, index) => {
+                                            return (                                                
+                                                <List.Item key={index} id="track">
                                                     <List.Content>
-                                                        <List.Header>{song}</List.Header>
+                                                        <List.Header id="track-title">{song}</List.Header>
+                                                    </List.Content>
+                                                    <List.Content id="media-icons" floated='right'>
+                                                        <List.Icon inverted name='apple' size='large' verticalAlign='middle' />
+                                                        <List.Icon inverted name='spotify' size='large' verticalAlign='middle' />
+                                                        <List.Icon inverted name='soundcloud' size='large' verticalAlign='middle' />
                                                     </List.Content>
                                                 </List.Item>
                                             )

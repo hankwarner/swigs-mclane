@@ -3,7 +3,8 @@ import {
     Responsive,
     Grid,
     Container,
-    Image
+    Image,
+    Header
 } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { setInstagramFeed, setInstagramLoading } from '../actions/landingActions';
@@ -36,14 +37,20 @@ class Landing extends Component {
                 <Responsive as={Grid}>
                     
                     {/* <Image src={images('./my_city.png')} size='big' /> */}
-                    <Grid.Row columns={3}>
-                        <Grid.Column>
-                            {instagramFeed.map(photo => {
-                                return (
-                                    <Image as="a" href={photo.link} src={photo.images.thumbnail.url} />
-                                )
-                            })}
-                        </Grid.Column>
+                    <Grid.Row centered>
+                        <Header size='huge' inverted color='grey' id="instagram-header">
+                            Instagram
+                        </Header>
+                    </Grid.Row>
+                    <hr className="landing-side-panel-dividers"></hr>
+                    <Grid.Row columns={2} id="instagram-feed">
+                        {instagramFeed.map(photo => {
+                            return (
+                                <Grid.Column>
+                                    <Image as="a" href={photo.link} src={photo.images.thumbnail.url} key={photo.id} id="instagram-photos" />
+                                </Grid.Column>
+                            )
+                        })}
                     </Grid.Row>
                 </Responsive>
             </div>

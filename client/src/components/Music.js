@@ -32,7 +32,7 @@ class Music extends Component {
                             Singles
                         </Header>
                     </Grid.Row>
-                    <hr></hr>
+                    <hr className="music-headers"></hr>
                     <Grid.Row id="song-cards" centered columns={3}>
                         {songs.map((song) => {
                             return (
@@ -61,7 +61,7 @@ class Music extends Component {
                             Albums
                         </Header>
                     </Grid.Row>
-                    <hr></hr>
+                    <hr className="music-headers"></hr>
                     {albums.map(album => {
                         return (
                             <Grid.Row columns={2} key={album._id}>

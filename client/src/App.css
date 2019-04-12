@@ -19,6 +19,25 @@
     z-index: -1;
 }
 
+#instagram-feed {
+    margin-left: 70%;
+}
+
+#instagram-photos {
+    margin-bottom: 5%;
+    margin-right: 5%;
+}
+
+#instagram-header {
+    margin-top: 2%;
+    margin-left: 66%;
+}
+
+.landing-side-panel-dividers {
+    width: 25%;
+    margin-left: 70%;
+}
+
 .singles {
     margin-top: 5%;
 }
@@ -27,7 +46,7 @@
     margin-top: 2%;
 }
 
-hr { 
+.music-headers { 
     width: 75%;
 }
 

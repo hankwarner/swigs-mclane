@@ -100,6 +100,6 @@ const mapStateToProps = (state) => ({
     music: state.music,
     albums: state.albums,
     loading: state.loading
-})
+});
 
 export default connect(mapStateToProps, { getMusic, getAlbums })(Music);

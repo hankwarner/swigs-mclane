@@ -13,3 +13,7 @@ export const ALBUMS_LOADING = 'ALBUMS_LOADING';
 // Menu action types
 export const GET_MENU_ITEMS = 'GET_MENU_ITEMS';
 export const SET_ACTIVE_MENU_ITEM = 'SET_ACTIVE_MENU_ITEM';
+
+// Landing page action types
+export const SET_INSTAGRAM_FEED = 'SET_INSTAGRAM_FEED';
+export const INSTAGRAM_LOADING = 'INSTAGRAM_LOADING';

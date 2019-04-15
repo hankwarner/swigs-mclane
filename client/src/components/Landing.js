@@ -35,7 +35,6 @@ class Landing extends Component {
         return (
             <div>
                 <Responsive as={Grid}>
-                    
                     {/* <Image src={images('./my_city.png')} size='big' /> */}
                     <Grid.Row centered>
                         <Header size='huge' inverted color='grey' id="instagram-header">
@@ -46,9 +45,14 @@ class Landing extends Component {
                     <Grid.Row columns={2} id="instagram-feed">
                         {instagramFeed.map(photo => {
                             return (
-                                <Grid.Column>
-                                    <Image as="a" href={photo.link} src={photo.images.thumbnail.url} key={photo.id} id="instagram-photos" />
-                                </Grid.Column>
+                                <div key={photo.id}>
+                                    <Grid.Column as={Responsive} minWidth={768}>
+                                        <Image href={photo.link} src={photo.images.thumbnail.url} id="instagram-photos" />
+                                    </Grid.Column>
+                                    <Grid.Column as={Responsive} maxWidth={767}>
+                                        <Image size='medium' href={photo.link} src={photo.images.standard_resolution.url} id="instagram-photos" />
+                                    </Grid.Column>
+                                </div>
                             )
                         })}
                     </Grid.Row>

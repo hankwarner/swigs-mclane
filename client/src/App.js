@@ -22,7 +22,6 @@ class App extends Component {
           <DesktopNavBar />
           <MobileNavigationBar />
           <div className="background">
-            <div className="background-overlay"></div>
             <Switch>
               <Route exact path="/" component={Landing} />
               <Route path="/home" component={Landing} />

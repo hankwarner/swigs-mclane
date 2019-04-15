@@ -56,13 +56,13 @@ class DesktopNavBar extends Component {
                                         </Link>
                                     )}
                                 </Container>
-                                <Menu.Item as="a" href="https://itunes.apple.com/us/artist/swigs-mclane/1300061776" position="right">
+                                <Menu.Item href="https://itunes.apple.com/us/artist/swigs-mclane/1300061776" position="right">
                                     <Icon name='apple' />
                                 </Menu.Item>
-                                <Menu.Item as="a" href="https://soundcloud.com/swigsmclane" position="right">
+                                <Menu.Item href="https://soundcloud.com/swigsmclane" position="right">
                                     <Icon name='soundcloud' />
                                 </Menu.Item>
-                                <Menu.Item as="a" href="https://open.spotify.com/artist/2pmvrHTpCslih7BtQ4Y9uc?si=s6rRz8O6SWikcHVqH3xkqw" position="right">
+                                <Menu.Item href="https://open.spotify.com/artist/2pmvrHTpCslih7BtQ4Y9uc?si=s6rRz8O6SWikcHVqH3xkqw" position="right">
                                     <Icon name='spotify' />
                                 </Menu.Item>
                             </Menu>
@@ -121,10 +121,10 @@ class MobileNavBar extends DesktopNavBar {
                             <Menu.Item onClick={this.handleToggle}>
                                 <Icon name='sidebar' />
                             </Menu.Item>
-                            <Menu.Item as="a" href="https://itunes.apple.com/us/artist/swigs-mclane/1300061776" position="right">
+                            <Menu.Item href="https://itunes.apple.com/us/artist/swigs-mclane/1300061776" position="right">
                                 <Icon name='apple' />
                             </Menu.Item>
-                            <Menu.Item as="a" href="https://soundcloud.com/swigsmclane" position="right">
+                            <Menu.Item href="https://soundcloud.com/swigsmclane" position="right">
                                 <Icon name='soundcloud' />
                             </Menu.Item>
                             <Menu.Item href="https://open.spotify.com/artist/2pmvrHTpCslih7BtQ4Y9uc?si=s6rRz8O6SWikcHVqH3xkqw" position="right">

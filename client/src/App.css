@@ -6,10 +6,9 @@
     position: relative;
     top: 0;
     bottom: 0;
-    z-index: -2;
 }
 
-.background-overlay {
+/* .background-overlay {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.5);
     top: 0;
@@ -17,60 +16,123 @@
     height: 100%;
     width: 100%;
     z-index: -1;
+} */
+
+/* desktop */
+@media only screen and (min-width: 768px) {
+    /* landing page */
+    #instagram-feed {
+        margin-left: 70%;
+    }
+
+    #instagram-photos {
+        margin-bottom: 5%;
+        margin-right: 5%;
+    }
+
+    #instagram-header {
+        margin-top: 2%;
+        margin-left: 70%;
+    }
+    
+    .landing-side-panel-dividers {
+        width: 27%;
+        margin-left: 70%;
+    }
+
+    /* music component */
+    #header {
+        margin-top: 2%;
+    }
+    
+    .music-headers { 
+        width: 75%;
+    }
+
+    .singles-cards {
+        margin-top: 5%;
+    }
+    
+    #song-cards {
+        padding-left: 10%;
+    }
+    
+    #album-image {
+        padding-left: 15%;
+        margin-bottom: 5%;
+    }
+    
+    #track-list {
+        padding-top: 5%;
+    }
+    
+    #track {
+        margin-bottom: 5%;
+    }
+    
+    #track-title {
+        color: rgb(255, 255, 255);
+    }
+    
+    #media-icons {
+        margin-right: 30%;
+    }
 }
 
-#instagram-feed {
-    margin-left: 70%;
-}
+/* mobile */
+@media only screen and (max-width: 767px) {
+    /* landing page */
+    #instagram-photos {
+        margin-bottom: 5%;
+        margin-left: 40%;
+    }
 
-#instagram-photos {
-    margin-bottom: 5%;
-    margin-right: 5%;
-}
+    .landing-side-panel-dividers {
+        width: 70%;
+        margin-left: 13%;
+    }
 
-#instagram-header {
-    margin-top: 2%;
-    margin-left: 66%;
-}
+    /* music component */
+    #header {
+        margin-top: 2%;
+    }
 
-.landing-side-panel-dividers {
-    width: 25%;
-    margin-left: 70%;
-}
+    .music-headers { 
+        width: 75%;
+    }
 
-.singles {
-    margin-top: 5%;
-}
+    #singles-grid {
+        width: 95% !important;
+        margin-left: 20%;
+        margin-bottom: 10%;
+    }
 
-#header {
-    margin-top: 2%;
-}
+    #album-image {
+        width: 90% !important;
+        margin-left: 5%;
+        margin-bottom: 5%;
+    }
 
-.music-headers { 
-    width: 75%;
-}
+    #album-content {
+        width: 70% !important;
+        margin-left: 15%;
+    }
 
-#song-cards {
-    padding-left: 10%;
-}
+    #track {
+        margin-bottom: 20%;
+    }
 
-#album-image {
-    padding-left: 15%;
-    margin-bottom: 5%;
-}
+    #track-title {
+        color: rgb(255, 255, 255);
+        margin-bottom: 5%;
+    }
 
-#track-list {
-    padding-top: 5%;
-}
+    #media-icons {
+        width: 100%;
+    }
 
-#track {
-    margin-bottom: 5%;
-}
+    #single-icon {
+        margin-right: 10%;
+    }
 
-#track-title {
-    color: rgb(255, 255, 255);
-}
-
-#media-icons {
-    margin-right: 30%;
 }

@@ -6,7 +6,8 @@ import {
     Icon,
     Card,
     Header,
-    List
+    List,
+    Responsive
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { getMusic } from '../actions/musicActions';
@@ -36,8 +37,8 @@ class Music extends Component {
                     <Grid.Row id="song-cards" centered columns={3}>
                         {songs.map((song) => {
                             return (
-                                <Grid.Column key={song._id}>
-                                    <div className="singles">
+                                <Grid.Column id="singles-grid" key={song._id}>
+                                    <div className="singles-cards">
                                         <Card>
                                             <Image href={song.soundcloudUrl} src={images(song.albumCoverUrl)} />
                                             <Card.Content>
@@ -68,18 +69,24 @@ class Music extends Component {
                                 <Grid.Column id="album-image" width={8}>
                                     <Image src={images(album.albumCoverUrl)} rounded />
                                 </Grid.Column>
-                                <Grid.Column width={8}>
+                                <Grid.Column width={8} id="album-content">
                                     <List divided id="track-list" verticalAlign='middle'>
                                         {album.songs.map((song, index) => {
                                             return (                                                
                                                 <List.Item key={index} id="track">
                                                     <List.Content>
-                                                        <List.Header id="track-title">{song}</List.Header>
+                                                        <List.Header as="h1" id="track-title">{song.title}</List.Header> 
                                                     </List.Content>
-                                                    <List.Content id="media-icons" floated='right'>
-                                                        <List.Icon inverted name='apple' size='large' verticalAlign='middle' />
-                                                        <List.Icon inverted name='spotify' size='large' verticalAlign='middle' />
-                                                        <List.Icon inverted name='soundcloud' size='large' verticalAlign='middle' />
+                                                    <List.Content as={Responsive} minWidth={768} id="media-icons" floated='right'>
+                                                        <a href={song.spotifyUrl}><List.Icon id="single-icon" name='spotify' size='large' verticalAlign='middle' /></a>
+                                                        <a href={song.appleMusicUrl}><List.Icon name='apple' size='large' verticalAlign='middle' /></a>
+                                                        <a href={song.soundcloudUrl}><List.Icon id="single-icon" name='soundcloud' size='large' verticalAlign='middle' /></a>
+                                                    </List.Content>
+                                                    
+                                                    <List.Content as={Responsive} maxWidth={767} id="media-icons" floated='right'>
+                                                        <a href={song.spotifyUrl}><List.Icon id="single-icon" name='spotify' size='huge' verticalAlign='middle' /></a>
+                                                        <a href={song.appleMusicUrl}><List.Icon id="single-icon" name='apple' size='huge' verticalAlign='middle' /></a>
+                                                        <a href={song.soundcloudUrl}><List.Icon id="single-icon" name='soundcloud' size='huge' verticalAlign='middle' /></a>
                                                     </List.Content>
                                                 </List.Item>
                                             )

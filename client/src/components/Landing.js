@@ -2,14 +2,12 @@ import React, { Component } from 'react'
 import {
     Responsive,
     Grid,
-    Container,
     Image,
-    Header,
-    GridColumn
+    Header
 } from 'semantic-ui-react'
 import { connect } from 'react-redux';
-import { setInstagramFeed, setInstagramLoading } from '../actions/landingActions';
-import instagramKeys from '../config/keys';
+import { setInstagramFeed, setInstagramLoading, setTwitterFeed, setTwitterLoading } from '../actions/landingActions';
+import keys from '../config/keys';
 import Instafeed from 'instafeed.js';
 
 const images = require.context('../../public/images', true);
@@ -17,21 +15,26 @@ const images = require.context('../../public/images', true);
 class Landing extends Component {
 
     componentWillMount() {
-        var feed = new Instafeed({
+        // call Instagram API
+        var instagramFeed = new Instafeed({
             get: 'user',
-            userId: instagramKeys.userId,
-            clientId: instagramKeys.instagramApiKey,
-            accessToken: instagramKeys.accessToken,
+            userId: keys.instagramUserId,
+            clientId: keys.instagramApiKey,
+            accessToken: keys.instagramAccessToken,
             // if valid data is returned from Instagram, store data in Redux
             success: (res) => {
                 this.props.setInstagramFeed(res.data);
             }
         });
-        feed.run();
+        instagramFeed.run();
+
+        // call Twitter API
+        this.props.setTwitterFeed();
     }
 
     render() {
         const instagramFeed = this.props.instagramFeed.instagramFeed;
+        const twitterFeed = this.props.twitterFeed.twitterFeed;
 
         return (
             <div>
@@ -65,10 +68,24 @@ class Landing extends Component {
                         </Grid.Column>
                         <Grid.Column width={6}>
                             <Grid columns="three" id="instagram-feed">
-                                {instagramFeed.map(photo => {
+                                {instagramFeed.map((photo, index) => {
+                                    return (
+                                        <Grid.Column as={Responsive} minWidth={768} key={index}>
+                                            <Image href={photo.link} src={photo.images.thumbnail.url} id="instagram-photos" />
+                                        </Grid.Column>
+                                    )
+                                })}
+                            </Grid>
+                            <hr className="landing-side-panel-dividers"></hr>
+                            <Header size='huge' inverted color='grey' id="instagram-header">
+                                Twitter
+                            </Header>
+                            <hr className="landing-side-panel-dividers"></hr>
+                            <Grid columns="one" id="instagram-feed">
+                                {twitterFeed.map(tweet => {
                                     return (
                                         <Grid.Column as={Responsive} minWidth={768}>
-                                            <Image href={photo.link} src={photo.images.thumbnail.url} id="instagram-photos" />
+                                            <div>{tweet.text}</div>
                                         </Grid.Column>
                                     )
                                 })}
@@ -83,7 +100,9 @@ class Landing extends Component {
 
 const mapStateToProps = (state) => ({
     instagramFeed: state.landing,
-    loading: state.loading
+    instagramLoading: state.instagramLoading,
+    twitterFeed: state.landing,
+    twitterLoading: state.twitterLoading
 });
 
-export default connect(mapStateToProps, { setInstagramFeed, setInstagramLoading })(Landing);
+export default connect(mapStateToProps, { setInstagramFeed, setInstagramLoading, setTwitterFeed, setTwitterLoading })(Landing);

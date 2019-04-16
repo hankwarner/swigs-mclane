@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const singles = require('./routes/api/singles');
 const albums = require('./routes/api/albums');
+const twitter = require('./routes/api/twitter');
 
 const app = express();
 
@@ -20,6 +21,7 @@ mongoose.connect(db)
 // Use routes
 app.use('/api/singles', singles);
 app.use('/api/albums', albums);
+app.use('/api/twitter', twitter);
 
 const port = process.env.PORT || 5000;
 

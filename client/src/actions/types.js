@@ -17,3 +17,5 @@ export const SET_ACTIVE_MENU_ITEM = 'SET_ACTIVE_MENU_ITEM';
 // Landing page action types
 export const SET_INSTAGRAM_FEED = 'SET_INSTAGRAM_FEED';
 export const INSTAGRAM_LOADING = 'INSTAGRAM_LOADING';
+export const SET_TWITTER_FEED = 'SET_TWITTER_FEED';
+export const TWITTER_LOADING = 'TWITTER_LOADING';

@@ -1,8 +1,10 @@
-import { SET_INSTAGRAM_FEED, INSTAGRAM_LOADING } from '../actions/types';
+import { SET_INSTAGRAM_FEED, INSTAGRAM_LOADING, SET_TWITTER_FEED, TWITTER_LOADING } from '../actions/types';
 
 const initialState = {
     instagramFeed: [],
-    loading: false
+    instagramLoading: false,
+    twitterFeed: [],
+    twitterLoading: false
 }
 
 export default (state = initialState, action) => {
@@ -11,13 +13,24 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 instagramFeed: action.payload,
-                loading: false
+                instagramLoading: false
             };
         case INSTAGRAM_LOADING:
             return {
                 ...state,
-                loading: true
-            }
+                instagramLoading: true
+            };
+        case SET_TWITTER_FEED:
+            return {
+                ...state,
+                twitterFeed: action.payload,
+                twitterLoading: false
+            };
+        case TWITTER_LOADING:
+            return {
+                ...state,
+                twitterLoading: true
+            };
         default:
             return state;
     }

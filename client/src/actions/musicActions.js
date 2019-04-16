@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { GET_MUSIC, ADD_MUSIC, DELETE_MUSIC, MUSIC_LOADING } from './types';
+import axios from 'axios';
 
 export const getMusic = () => dispatch => {
     dispatch(setMusicLoading());

@@ -22,7 +22,8 @@
 @media only screen and (min-width: 768px) {
     /* landing page */
     #instagram-feed {
-        margin-left: 70%;
+        height: 500px;
+        overflow: scroll;
     }
 
     #instagram-photos {
@@ -32,12 +33,12 @@
 
     #instagram-header {
         margin-top: 2%;
-        margin-left: 70%;
+        /* margin-left: 70%; */
     }
     
     .landing-side-panel-dividers {
         width: 27%;
-        margin-left: 70%;
+        /* margin-left: 70%; */
     }
 
     /* music component */

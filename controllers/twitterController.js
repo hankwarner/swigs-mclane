@@ -12,8 +12,8 @@ var twitterFeed = new Twit({
     consumer_secret: keys.twitterApiSecret,
     access_token: keys.twitterAccessToken,
     access_token_secret: keys.twitterAccessTokenSecret,
-    // user_id: 190088975 //hank
-    user_id: 160657311 //swigs
+    user_id: 160657311,
+    screen_name: 'suavo33'
 })
 
 module.exports = {

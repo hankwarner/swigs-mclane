@@ -1,5 +1,5 @@
 .background {
-    background-image: url('images/elevated_mindstate.jpg');
+    background-image: url('images/zavi_cloud.jpg');
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
@@ -21,8 +21,40 @@
 /* desktop */
 @media only screen and (min-width: 768px) {
     /* landing page */
+    #landing-banner {
+        width: 70% !important;
+        height: 50% !important;
+        margin-top: 2%;
+        margin-left: 15%;
+        opacity: 0.90;
+    }
+
+    #latest-news-header {
+        margin-top: 1%;
+        margin-left: 40%;
+    }
+
+    #latest-news-photo {
+        margin-left: 25%;
+    }
+
+    #latest-news-text {
+        padding: 20px;
+        margin-bottom: 8%;
+        color: white;
+        background-color: black;
+        opacity: 0.5;
+    }
+
+    #instagram-header {
+        margin-top: 2%;
+        margin-left: 40%;
+    }
+
     #instagram-feed {
+        padding-left: 15%;
         height: 500px;
+        margin-bottom: 10%;
         overflow: scroll;
     }
 
@@ -31,14 +63,38 @@
         margin-right: 5%;
     }
 
-    #instagram-header {
-        margin-top: 2%;
-        /* margin-left: 70%; */
+    .tweets-by-sauvo {
+        background-color: #1da1f2;
+    }
+
+    .tweets-by-sauvo a {
+        color: white;
+    }
+
+    #twitter-feed {
+        padding-left: 5%;
+        padding-right: 5%;
+        margin-top: 10%;
+        margin-left: 18%;
+        height: 500px;
+        width: 60%;
+        overflow: scroll;
+        font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+        background-color: rgb(255, 255, 255);
+    }
+
+    /* .tweet-text {
+
+    } */
+    
+    .landing-page-divider {
+        width: 80%;
+        margin-left: 10%;
     }
     
-    .landing-side-panel-dividers {
-        width: 27%;
-        /* margin-left: 70%; */
+    .landing-side-panel-divider {
+        width: 80%;
+        margin-left: 10%;
     }
 
     /* music component */

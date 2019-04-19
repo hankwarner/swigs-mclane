@@ -11,10 +11,6 @@ import { connect } from 'react-redux';
 import { setInstagramFeed, setInstagramLoading, setTwitterFeed, setTwitterLoading } from '../actions/landingActions';
 import Instafeed from 'instafeed.js';
 
-if (process.env.NODE_ENV === 'development') {
-    import keys from '../config/keys';
-} 
-
 const images = require.context('../../public/images', true);
 
 class Landing extends Component {
@@ -23,9 +19,9 @@ class Landing extends Component {
         // call Instagram API
         var instagramFeed = new Instafeed({
             get: 'user',
-            userId: keys.instagramUserId,
-            clientId: keys.instagramApiKey,
-            accessToken: keys.instagramAccessToken,
+            userId: process.env.REACT_APP_INSTAGRAM_USER_ID,
+            clientId: process.env.REACT_APP_INSTAGRAM_API_KEY,
+            accessToken: process.env.REACT_APP_INSTAGRAM_ACCESS_TOKEN,
             // if valid data is returned from Instagram, store data in Redux
             success: (res) => {
                 this.props.setInstagramFeed(res.data);

@@ -9,8 +9,11 @@ import {
 } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { setInstagramFeed, setInstagramLoading, setTwitterFeed, setTwitterLoading } from '../actions/landingActions';
-import keys from '../config/keys';
 import Instafeed from 'instafeed.js';
+
+if (process.env.NODE_ENV === 'development') {
+    import keys from '../config/keys';
+} 
 
 const images = require.context('../../public/images', true);
 

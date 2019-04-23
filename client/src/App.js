@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
+import './css/App.css';
+import './css/magnific.css';
 
 // React Router
 import { Route, Switch } from "react-router-dom";

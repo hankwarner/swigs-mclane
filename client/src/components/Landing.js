@@ -10,6 +10,7 @@ import {
 import { connect } from 'react-redux';
 import { setInstagramFeed, setInstagramLoading, setTwitterFeed, setTwitterLoading } from '../actions/landingActions';
 import Instafeed from 'instafeed.js';
+// import { MagnificPopup } from 'react-magnific-popup';
 
 const images = require.context('../../public/images', true);
 
@@ -32,6 +33,10 @@ class Landing extends Component {
         // call Twitter API
         this.props.setTwitterFeed();
     }
+
+    // magnificPopup() {
+    //     MagnificPopup.trigger('a', 'open');
+    // }
 
     render() {
         const instagramFeed = this.props.instagramFeed.instagramFeed;
@@ -81,14 +86,31 @@ class Landing extends Component {
                             </Container>
                         </Grid.Column>
                         <Grid.Column width={6}>
-                            <Grid columns="two" id="instagram-feed">
+                            <Grid columns="one" id="instagram-feed">
                                 {instagramFeed.map((photo, index) => {
                                     return (
                                         <Grid.Column as={Responsive} minWidth={768} key={index}>
-                                            <Image href={photo.link} src={photo.images.thumbnail.url} id="instagram-photos" />
+                                            <Image 
+                                                as="a"
+                                                href={photo.link} 
+                                                src={photo.images.low_resolution.url} 
+                                                id="instagram-photo"
+                                            />
+                                            <div className="instagram-photo-stats">
+                                                <div className="instagram-photo-likes">
+                                                    <Icon id="heart-icon" name="like" />
+                                                    {photo.likes.count}
+                                                </div>
+                                                <div className="instagram-username">{photo.user.username}</div>
+                                                {
+                                                    photo.caption ? 
+                                                        <div className="instagram-photo-caption">{photo.caption.text}</div> : null
+                                                }
+                                            </div>
                                         </Grid.Column>
                                     )
                                 })}
+                                {/* <div id="instafeed"></div> */}
                             </Grid>
                             <hr className="landing-side-panel-dividers"></hr>
                             <Grid columns="one" id="twitter-feed">
@@ -105,7 +127,7 @@ class Landing extends Component {
                                     )
                                 })} */}
 
-                                <a class="twitter-timeline" href="https://twitter.com/suavo33">Tweets by @suavo33</a>
+                                <a className="twitter-timeline" href="https://twitter.com/suavo33">Tweets by @suavo33</a>
                             </Grid>
                         </Grid.Column>
                     </Grid.Row>

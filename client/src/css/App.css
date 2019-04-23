@@ -1,5 +1,5 @@
 .background {
-    background-image: url('images/zavi_cloud.jpg');
+    background-image: url('../images/zavi_cloud.jpg');
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
@@ -52,15 +52,36 @@
     }
 
     #instagram-feed {
-        padding-left: 15%;
+        width: 75%;
         height: 500px;
+        padding-left: 15%;
+        padding-right: 8%;
         margin-bottom: 10%;
+        margin-left: 11%;
+        background-color: white;
         overflow: scroll;
     }
 
-    #instagram-photos {
+    #instagram-photo {
         margin-bottom: 5%;
         margin-right: 5%;
+        padding-right: 5%;
+    }
+
+    #heart-icon {
+        color: red;
+    }
+
+    .instagram-username {
+        font-weight: bold;
+    }
+
+    .instagram-photo-caption {
+        margin-top: 3%;
+    }
+
+    #instagram-photos:hover {
+        opacity: 0.8;
     }
 
     .tweets-by-sauvo {

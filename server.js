@@ -13,7 +13,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // DB config
-const db = require('./config/keys').mongoURI;
+const db = process.env.MONGO_DB_KEY;
 
 // Connect to Mongo
 mongoose.connect(db)

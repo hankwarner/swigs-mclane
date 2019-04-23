@@ -1,6 +1,5 @@
 // Twit config
 const Twit = require('twit');
-const keys = require('../config/keys');
 
 const twitterApiCallParams = {
     q: 'banana since:2011-07-11',
@@ -8,10 +7,10 @@ const twitterApiCallParams = {
 }
 
 var twitterFeed = new Twit({
-    consumer_key: keys.twitterApiKey,
-    consumer_secret: keys.twitterApiSecret,
-    access_token: keys.twitterAccessToken,
-    access_token_secret: keys.twitterAccessTokenSecret,
+    consumer_key: process.env.REACT_APP_TWITTER_API_KEY,
+    consumer_secret: process.env.REACT_APP_TWITTER_API_SECRET,
+    access_token: process.env.REACT_APP_TWITTER_ACCESS_TOKEN,
+    access_token_secret: process.env.REACT_APP_TWITTER_ACCESS_TOKEN_SECRET,
     user_id: 160657311,
     screen_name: 'suavo33'
 })

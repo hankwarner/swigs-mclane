@@ -113,10 +113,20 @@ class Landing extends Component {
                                     )
                                 })}
                             </Grid>
-                            <hr className="landing-side-panel-dividers"></hr>
+
                             {/* Twitter feed */}
-                            <Grid columns="one" id="twitter-feed">
-                                {/* <h3 className="tweets-by-sauvo">
+                            <Grid.Row>
+                                <Grid.Column id="twitter-feed">
+                                    <Header size='huge' inverted color='grey' id="instagram-header">
+                                        Twitter
+                                    </Header>
+                                    <hr className="landing-side-panel-dividers"></hr>
+                                    <a className="twitter-timeline" href="https://twitter.com/suavo33">Tweets by @suavo33</a>
+                                </Grid.Column>
+                            </Grid.Row>
+                            
+                            {/* <Grid columns="one" >
+                                <h3 className="tweets-by-sauvo">
                                     <Icon name="twitter" size="large" />
                                     Tweets by <a href="https://twitter.com/suavo33">@sauvo33</a>
                                 </h3>
@@ -127,10 +137,8 @@ class Landing extends Component {
                                             <div className="tweet-text">{tweet.text}</div>
                                         </Grid.Column>
                                     )
-                                })} */}
-
-                                <a className="twitter-timeline" href="https://twitter.com/suavo33">Tweets by @suavo33</a>
-                            </Grid>
+                                })}
+                            </Grid> */}
                         </Grid.Column>
                     </Grid.Row>
                 </Responsive>

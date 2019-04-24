@@ -96,12 +96,10 @@
         padding-left: 5%;
         padding-right: 5%;
         margin-top: 10%;
-        margin-left: 18%;
+        margin-left: 5%;
         height: 500px;
-        width: 60%;
-        overflow: scroll;
+        width: 90%;
         font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
-        background-color: rgb(255, 255, 255);
     }
     
     .landing-page-divider {
@@ -150,6 +148,11 @@
     
     #media-icons {
         margin-right: 30%;
+    }
+
+    /* Footer */
+    .footer-icon {
+        margin: 2%;
     }
 }
 
@@ -292,4 +295,16 @@
         margin-right: 10%;
     }
 
+
+    /* Footer */
+    .footer-icon {
+        margin-top: 2%;
+        margin-right: 5%;
+        margin-bottom: 2%;
+        margin-left: 20%;
+    }
+}
+
+.footer {
+    background-color: black;
 }

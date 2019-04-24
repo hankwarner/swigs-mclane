@@ -4,14 +4,15 @@ import './css/magnific.css';
 
 // React Router
 import { Route, Switch } from "react-router-dom";
-import DesktopNavBar from './components/NavBar';
-import { MobileNavigationBar } from './components/NavBar';
 
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
 
 // Components
+import DesktopNavBar from './components/NavBar';
+import { MobileNavigationBar } from './components/NavBar';
+import Footer from './components/Footer';
 import Landing from './components/Landing';
 import Music from './components/Music';
 
@@ -29,6 +30,7 @@ class App extends Component {
               <Route path="/music" component={Music} />
             </Switch>
           </div>
+          <Footer />
         </div>
       </Provider>
     );

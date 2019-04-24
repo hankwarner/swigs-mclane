@@ -103,10 +103,6 @@
         font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
         background-color: rgb(255, 255, 255);
     }
-
-    /* .tweet-text {
-
-    } */
     
     .landing-page-divider {
         width: 80%;
@@ -160,9 +156,92 @@
 /* mobile */
 @media only screen and (max-width: 767px) {
     /* landing page */
-    #instagram-photos {
+    #landing-banner {
+        width: 95% !important;
+        height: 100% !important;
+        margin-top: 2%;
+        margin-left: 2%;
+        margin-right: 2%;
+        opacity: 0.85;
+    }
+
+    #latest-news-header {
+        margin-top: 5%;
+        margin-left: 32%;
+        margin-right: 20%;
+        width: 100%;
+    }
+
+    #latest-news-photo {
+        margin-top: 5%;
+        margin-left: 4%;
+        width: 90%;
+    }
+    
+    #latest-news-text {
+        padding: 10px;
+        margin-top: 3%;
         margin-bottom: 5%;
-        margin-left: 40%;
+        color: white;
+        background-color: black;
+        opacity: 0.5;
+    }
+
+    #instagram-header {
+        margin-left: 35%;
+        margin-right: 20%;
+        width: 100%;
+        font-weight: bold;
+    }
+
+    #instagram-feed {
+        width: 75%;
+        height: 500px;
+        padding-left: 15%;
+        padding-right: 8%;
+        margin-right: 10%;
+        margin-bottom: 10%;
+        margin-left: 10%;
+        background-color: white;
+        overflow: scroll;
+    }
+
+    #instagram-photo {
+        margin-top: 5%;
+        margin-right: 5%;
+        margin-bottom: 5%;
+    }
+
+    #heart-icon {
+        color: red;
+    }
+
+    .instagram-username {
+        font-weight: bold;
+    }
+
+    .instagram-photo-stats {
+        margin-bottom: 10%;
+    }
+
+    #twitter-header {
+        margin-left: 35%;
+        margin-right: 10%;
+        width: 100%;
+        font-weight: bold;
+    }
+
+    #twitter-feed {
+        padding-left: 5%;
+        padding-right: 5%;
+        margin-top: 2%;
+        margin-bottom: 10%;
+        margin-left: 10%;
+        height: 500px;
+        width: 80%;
+        overflow: scroll;
+        font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+        background-color: rgb(255, 255, 255);
     }
 
     .landing-side-panel-dividers {

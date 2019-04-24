@@ -10,8 +10,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 // Components
-import DesktopNavBar from './components/NavBar';
-import { MobileNavigationBar } from './components/NavBar';
+import NavigationBar from './components/NavigationBar';
 import Footer from './components/Footer';
 import Landing from './components/Landing';
 import Music from './components/Music';
@@ -21,8 +20,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
-          <DesktopNavBar />
-          <MobileNavigationBar />
+          <NavigationBar />
           <div className="background">
             <Switch>
               <Route exact path="/" component={Landing} />

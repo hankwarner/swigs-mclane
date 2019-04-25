@@ -3,7 +3,7 @@ import { GET_ALBUMS, ADD_ALBUM, DELETE_ALBUM, ALBUMS_LOADING } from './types';
 
 export const getAlbums = () => dispatch => {
     dispatch(setAlbumsLoading());
-    axios.get('/api/albums').then(res =>
+    axios.get('/.netlify/functions/server/albums').then(res =>
         dispatch({
             type: GET_ALBUMS,
             payload: res.data
@@ -12,7 +12,7 @@ export const getAlbums = () => dispatch => {
 };
 
 export const addAlbum = (newAlbum) => dispatch => {
-    axios.post('/api/albums', newAlbum).then(res => {
+    axios.post('/.netlify/functions/server/albums', newAlbum).then(res => {
         dispatch({
             type: ADD_ALBUM,
             payload: res.data
@@ -21,7 +21,7 @@ export const addAlbum = (newAlbum) => dispatch => {
 };
 
 export const deleteAlbum = id => dispatch => {
-    axios.delete(`/api/albums/${id}`).then(res => {
+    axios.delete(`/.netlify/functions/server/albums/${id}`).then(res => {
         dispatch({
             type: DELETE_ALBUM,
             payload: id

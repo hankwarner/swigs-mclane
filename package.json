@@ -5,10 +5,11 @@
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
-    "start": "node server.js",
+    "start": "./node_modules/.bin/netlify-lambda serve server",
+    "build": "./node_modules/.bin/netlify-lambda build server",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm start\" \"npm run client\"",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "repository": {
@@ -27,6 +28,8 @@
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "mongoose": "^5.4.20",
+    "netlify-lambda": "^1.4.5",
+    "serverless-http": "^2.0.1",
     "twit": "^2.2.11"
   },
   "devDependencies": {

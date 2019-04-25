@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const getMusic = () => dispatch => {
     dispatch(setMusicLoading());
-    axios.get('/api/singles').then(res => 
+    axios.get('/.netlify/functions/server/singles').then(res => 
         dispatch({
             type: GET_MUSIC,
             payload: res.data
@@ -21,7 +21,7 @@ export const addMusic = (newMusic) => dispatch => {
 };
 
 export const deleteMusic = id => dispatch => {
-    axios.delete(`/api/singles/${id}`).then(res => {
+    axios.delete(`/.netlify/functions/server/singles/${id}`).then(res => {
         dispatch({
             type: DELETE_MUSIC,
             payload: id

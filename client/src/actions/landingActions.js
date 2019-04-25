@@ -17,7 +17,7 @@ export const setInstagramLoading = () => {
 
 export const setTwitterFeed = () => dispatch => {
     dispatch(setTwitterLoading());
-    axios.get('/api/twitter').then(res => 
+    axios.get('/.netlify/functions/server/twitter').then(res => 
         dispatch({
             type: SET_TWITTER_FEED,
             payload: res.data

@@ -1,6 +1,7 @@
 node_modules
 .env
 client/.env
+functions
 config/keys.js
 .vscode/
 client/src/config/keys.js

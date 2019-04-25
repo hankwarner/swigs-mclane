@@ -11,7 +11,7 @@
     "client": "npm start --prefix client",
     "client-build": "npm run build --prefix client",
     "dev": "concurrently \"npm start\" \"npm run client\"",
-    "production": "npm run build && npm run client-build",
+    "production": "npm run client-build && npm run build",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "repository": {

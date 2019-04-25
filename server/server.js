@@ -5,19 +5,6 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 const routes = require('./routes');
-// const singles = require('../routes/api/singles');
-// const albums = require('../routes/api/albums');
-// const twitter = require('../routes/api/twitter');
-
-//testing purposes
-// const router = express.Router();
-
-// router.get("/", (req, res) => {
-//     res.json({
-//       hello: "hi!"
-//     });
-//   });
-//testing purposes
 
 const app = express();
 
@@ -32,9 +19,7 @@ mongoose.connect(db)
     .then(() => console.log('MongoDB connected...'))
     .catch(err => console.log(err));
 
-//testing
 app.use('/.netlify/functions/server', routes);
-//testing
 
 // Use routes
 // if (process.env.NODE_ENV === 'production') {

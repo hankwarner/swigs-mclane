@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
-    "start": "./node_modules/.bin/netlify-lambda serve server",
-    "build": "./node_modules/.bin/netlify-lambda build server",
+    "start": "NODE_ENV=development ./node_modules/.bin/netlify-lambda serve server",
+    "build": "NODE_ENV=production ./node_modules/.bin/netlify-lambda build server",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "client-build": "npm run build --prefix client",

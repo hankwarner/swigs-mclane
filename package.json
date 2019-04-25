@@ -9,7 +9,9 @@
     "build": "./node_modules/.bin/netlify-lambda build server",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
+    "client-build": "npm run build --prefix client",
     "dev": "concurrently \"npm start\" \"npm run client\"",
+    "production": "npm build && npm run client-build",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "repository": {

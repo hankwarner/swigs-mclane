@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const singleController = require('../controllers/singleController');
 const albumController = require('../controllers/albumController');
-const twitterController = require('../../controllers/twitterController');
+const twitterController = require('../controllers/twitterController');
 
 // GET api/singles
 router.get('/singles', singleController.getAllSingles);

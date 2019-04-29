@@ -8,6 +8,23 @@ const isLocalhost = Boolean(
     )
 );
 
+const checkEnvironment = function() {
+  if (process.env.NODE_ENV == 'development') {
+    return true;
+  } else if (process.env.NODE_ENV == 'production') {
+    return false;
+  }
+}
+
+export function setApiUrl() {
+  if (checkEnvironment()) {
+    var apiUrl = '/api';
+  } else {
+    var apiUrl = 'https://swigs-mclane.herokuapp.com/api';
+  }
+  return apiUrl;
+}
+
 export function register(config) {
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.

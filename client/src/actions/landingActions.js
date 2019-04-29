@@ -1,5 +1,8 @@
 import { SET_INSTAGRAM_FEED, INSTAGRAM_LOADING, SET_TWITTER_FEED, TWITTER_LOADING } from './types';
 import axios from 'axios';
+import * as serviceWorker from '../serviceWorker';
+
+const api = serviceWorker.setApiUrl();
 
 export const setInstagramFeed = (instafeed) => dispatch => {
     dispatch(setInstagramLoading());
@@ -17,7 +20,7 @@ export const setInstagramLoading = () => {
 
 export const setTwitterFeed = () => dispatch => {
     dispatch(setTwitterLoading());
-    axios.get('/api/twitter').then(res => 
+    axios.get(`${api}/twitter`).then(res => 
         dispatch({
             type: SET_TWITTER_FEED,
             payload: res.data

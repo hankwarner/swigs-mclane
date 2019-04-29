@@ -1,11 +1,8 @@
 import axios from 'axios';
 import { GET_ALBUMS, ADD_ALBUM, DELETE_ALBUM, ALBUMS_LOADING } from './types';
+import * as serviceWorker from '../serviceWorker';
 
-if (process.env.NODE_ENV == 'development') {
-    var api  = '/api';
-} else if (process.env.NODE_ENV == 'production') {
-    var api = 'https://swigs-mclane.herokuapp.com/api';
-}
+const api = serviceWorker.setApiUrl();
 
 export const getAlbums = () => dispatch => {
     dispatch(setAlbumsLoading());

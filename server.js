@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -8,6 +9,7 @@ const albums = require('./routes/api/albums');
 const twitter = require('./routes/api/twitter');
 
 const app = express();
+app.use(cors());
 
 // Bodyparser middleware
 app.use(bodyParser.json());

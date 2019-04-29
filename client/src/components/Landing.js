@@ -10,7 +10,6 @@ import {
 import { connect } from 'react-redux';
 import { setInstagramFeed, setInstagramLoading, setTwitterFeed, setTwitterLoading } from '../actions/landingActions';
 import Instafeed from 'instafeed.js';
-// import { MagnificPopup } from 'react-magnific-popup';
 
 const images = require.context('../../public/images', true);
 
@@ -33,10 +32,6 @@ class Landing extends Component {
         // call Twitter API
         this.props.setTwitterFeed();
     }
-
-    // magnificPopup() {
-    //     MagnificPopup.trigger('a', 'open');
-    // }
 
     render() {
         const instagramFeed = this.props.instagramFeed.instagramFeed;

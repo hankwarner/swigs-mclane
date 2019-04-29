@@ -11,6 +11,12 @@ const twitter = require('./routes/api/twitter');
 const app = express();
 app.use(cors());
 
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 // Bodyparser middleware
 app.use(bodyParser.json());
 

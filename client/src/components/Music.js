@@ -28,6 +28,11 @@ class Music extends Component {
         return (
             <div>
                 <Grid>
+                    <Grid.Row as={Responsive} columns='one'>
+                        <span className="logo-wrapper">
+                            <Image src={images('./swigs_mclane_logo.png')} size='big' />
+                        </span>
+                    </Grid.Row>
                     <Grid.Row centered>
                         <Header as='h1' inverted color='grey' id="header">
                             Singles

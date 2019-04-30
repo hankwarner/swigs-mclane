@@ -142,7 +142,7 @@ class Landing extends Component {
                 <Responsive as={Grid} columns='one' maxWidth={768}>
                     <Image id="landing-banner" src={images('./zavi_banner_mobile.jpg')} size='massive' />
                     <span className="logo-wrapper">
-                        <Image id="swigs-mclane-logo" src={images('./swigs_mclane_logo.png')} size='big' />
+                        <Image src={images('./swigs_mclane_logo.png')} size='big' />
                     </span>
                     <Grid.Row>
                         <Grid.Column width={16}>

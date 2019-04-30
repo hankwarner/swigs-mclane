@@ -180,6 +180,8 @@
         position: relative;
         height: 600px;
         overflow: scroll;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
     }
     
     /* navigation bar */

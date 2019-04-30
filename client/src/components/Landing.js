@@ -41,7 +41,7 @@ class Landing extends Component {
             <div>
                 {/* Desktop */}
                 <Responsive as={Grid} columns='two' minWidth={768}>
-                    <Image id="landing-banner" src={images('./zavi_banner_with_logo.jpg')} size='big' />
+                    <Image id="landing-banner" src={images('./zavi_banner_white_logo.jpg')} size='big' />
                     <Grid.Row centered>
                         <Grid.Column width={10}>
                             <Header size='huge' inverted color='grey' id="latest-news-header">
@@ -172,9 +172,6 @@ class Landing extends Component {
                                 </p>
                                 <p>
                                     Consisting of five songs and totaling about 20 minutes long, “Elevated Mindstate” is said to have a vintage Atlanta feel to its contents. Swigs wrote the project from a coming-of-age in the city point of view. After absorbing his surroundings, he recounts his experience in an inspiring fashion. The standout track titled “My City” offers a vibrant salute to the “Old Atlanta.” 
-                                </p>
-                                <p>
-                                    With live instrumentation, heavy bass, rhythmic samples and piercing lyrics, “Elevated Mindstate” will have listeners’ heads nodding and their spirits lifted. Another notable track, “Usual Suspects”, gives a voice to oppression. The EP features talent from some of Atlanta's premier artists, containing production by Dopeboi, 5AM, Quiet Earp and the Soul Sun Beats. It also includes vocals by OG Cutty, Ghostnotes (5AM and Quiet Earp) and Mr. Brown, the other half of Super Lario Bros.
                                 </p>
                             </Container>
                         </Grid.Column>

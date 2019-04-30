@@ -41,7 +41,7 @@ class Landing extends Component {
             <div>
                 {/* Desktop */}
                 <Responsive as={Grid} columns='two' minWidth={768}>
-                    <Image id="landing-banner" src={images('./zavi_banner.jpg')} size='big' />
+                    <Image id="landing-banner" src={images('./zavi_banner_with_logo.jpg')} size='big' />
                     <Grid.Row centered>
                         <Grid.Column width={10}>
                             <Header size='huge' inverted color='grey' id="latest-news-header">
@@ -141,6 +141,9 @@ class Landing extends Component {
                 {/* Mobile */}
                 <Responsive as={Grid} columns='one' maxWidth={768}>
                     <Image id="landing-banner" src={images('./zavi_banner.jpg')} size='massive' />
+                    <span className="logo-wrapper">
+                        <Image id="swigs-mclane-logo" src={images('./swigs_mclane_logo.png')} size='big' />
+                    </span>
                     <Grid.Row>
                         <Grid.Column width={16}>
                             <Header size='huge' inverted color='grey' id="latest-news-header">

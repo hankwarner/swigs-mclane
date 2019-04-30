@@ -72,7 +72,7 @@ class Music extends Component {
                                 <Grid.Column width={8} id="album-content">
                                     <List divided id="track-list" verticalAlign='middle'>
                                         {album.songs.map((song, index) => {
-                                            return (                                                
+                                            return (
                                                 <List.Item key={index} id="track">
                                                     <List.Content>
                                                         <List.Header as="h1" id="track-title">{song.title}</List.Header> 

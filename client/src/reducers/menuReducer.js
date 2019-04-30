@@ -3,9 +3,7 @@ import { GET_MENU_ITEMS, SET_ACTIVE_MENU_ITEM } from '../actions/types';
 const initialState = {
     menuItems: [
         'home',
-        'music',
-        'video',
-        'merch'
+        'music'
     ],
     activeItem: "home"
 }

@@ -171,31 +171,15 @@
 }
 
 /* mobile */
-@media only screen and (max-width: 767px) {
-    /* body, html { 
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
-    } */
-
-    body {
-        height: 100%;
-        overflow: scroll;
-        -webkit-overflow-scrolling: touch
-    }
-    
+@media only screen and (max-width: 767px) {    
     .background {
         background-image: url('../images/zavi_cloud.jpg');
         background-size: cover;
         background-position: center center;
         background-attachment: scroll;
-        /* -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover; */
         position: relative;
-        height: 100%;
-        overflow: hidden;
-        top: 0;
-        bottom: 0;
+        height: 600px;
+        overflow: scroll;
     }
     
     /* navigation bar */

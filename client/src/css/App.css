@@ -187,7 +187,7 @@
         background-image: url('../images/zavi_cloud.jpg');
         background-size: cover;
         background-position: center center;
-        background-attachment: fixed;
+        background-attachment: scroll;
         /* -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover; */

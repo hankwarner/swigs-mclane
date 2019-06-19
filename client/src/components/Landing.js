@@ -179,30 +179,18 @@ class Landing extends Component {
                     </Grid.Row>
                     {/* Instagram feed */}
                     <Grid.Row>
-                        <Grid.Column width={16} id="instagram-feed">
-                            {/* {instagramFeed.map((photo, index) => {
-                                return (
-                                    <Grid.Row as={Responsive} key={index}>
-                                        <Image 
-                                            as="a"
-                                            href={photo.link} 
-                                            src={photo.images.low_resolution.url} 
-                                            id="instagram-photo"
-                                        />
-                                        <div className="instagram-photo-stats">
-                                            <div className="instagram-photo-likes">
-                                                <Icon id="heart-icon" name="like" />
-                                                {photo.likes.count}
-                                            </div>
-                                            <div className="instagram-username">{photo.user.username}</div>
-                                            {
-                                                photo.caption ? 
-                                                    <div className="instagram-photo-caption">{photo.caption.text}</div> : null
-                                            }
-                                        </div>
-                                    </Grid.Row>
-                                )
-                            })} */}
+                        <Grid.Column width={16}>
+                            {/* gets the latest Instagram post url from the api */}
+                            {this.state.latestInstagramPost != '' ? 
+                                <InstagramEmbed
+                                    className="instagram-feed"    
+                                    url={this.state.latestInstagramPost}
+                                        maxWidth={320}
+                                        hideCaption={false}
+                                        containerTagName='div'
+                                        injectScript
+                                />
+                            : '' }
                         </Grid.Column>
                     </Grid.Row>
 

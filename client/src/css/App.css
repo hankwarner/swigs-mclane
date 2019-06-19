@@ -58,7 +58,6 @@
         padding-right: 8%;
         margin-bottom: 10%;
         margin-left: 19%;
-        background-color: white;
         overflow: scroll;
     }
 
@@ -270,15 +269,10 @@
         font-weight: bold;
     }
 
-    #instagram-feed {
-        width: 75%;
-        height: 500px;
+    .instagram-feed {
         padding-left: 15%;
         padding-right: 8%;
-        margin-right: 10%;
-        margin-bottom: 10%;
-        margin-left: 10%;
-        background-color: white;
+        margin-left: 3%;
         overflow: scroll;
     }
 

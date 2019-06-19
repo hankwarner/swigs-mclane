@@ -269,6 +269,11 @@
         font-weight: bold;
     }
 
+    .instagram-feed {
+        margin-left: 12%;
+        margin-right: 8%;
+    }
+
     #instagram-photo {
         margin-top: 5%;
         margin-right: 5%;

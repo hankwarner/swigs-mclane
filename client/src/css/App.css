@@ -102,6 +102,7 @@
         height: 500px;
         width: 90%;
         font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+        overflow: scroll;
     }
     
     .landing-page-divider {

@@ -111,15 +111,15 @@ class Landing extends Component {
 
                             {/* Twitter feed */}
                             <Grid.Row>
+                                <Header size='huge' inverted color='grey' id="instagram-header">
+                                    Twitter
+                                </Header>
+                                <hr className="landing-side-panel-dividers"></hr>
                                 <Grid.Column id="twitter-feed">
-                                    <Header size='huge' inverted color='grey' id="instagram-header">
-                                        Twitter
-                                    </Header>
-                                    <hr className="landing-side-panel-dividers"></hr>
                                     <a className="twitter-timeline" href="https://twitter.com/suavo33">Tweets by @suavo33</a>
                                 </Grid.Column>
                             </Grid.Row>
-                            
+                            {/* keeping this in case I need to build my own Twitter widget */}
                             {/* <Grid columns="one" >
                                 <h3 className="tweets-by-sauvo">
                                     <Icon name="twitter" size="large" />

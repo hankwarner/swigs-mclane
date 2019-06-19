@@ -22,9 +22,12 @@ app.use(bodyParser.json());
 
 // DB config
 const db = process.env.MONGO_DB_KEY;
+const options = {
+    useNewUrlParser: true
+}
 
 // Connect to Mongo
-mongoose.connect(db)
+mongoose.connect(db, options)
     .then(() => console.log('MongoDB connected...'))
     .catch(err => console.log(err));
 

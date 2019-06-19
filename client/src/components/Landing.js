@@ -12,12 +12,14 @@ import { connect } from 'react-redux';
 import { setInstagramFeed, setInstagramLoading, setTwitterFeed, setTwitterLoading } from '../actions/landingActions';
 import Instafeed from 'instafeed.js';
 import { Timeline } from 'react-twitter-widgets';
+import InstagramEmbed from 'react-instagram-embed';
 
 const images = require.context('../../public/images', true);
 
 class Landing extends Component {
     state = {
-        expandText: false
+        expandText: false,
+        latestInstagramPost: ''
     }
 
     componentWillMount() {
@@ -29,10 +31,11 @@ class Landing extends Component {
             accessToken: process.env.REACT_APP_INSTAGRAM_ACCESS_TOKEN,
             // if valid data is returned from Instagram, store data in Redux
             success: (res) => {
-                this.props.setInstagramFeed(res.data);
+                this.setState({ latestInstagramPost: res.data[0].link });
             }
         });
         instagramFeed.run();
+        
     }
 
     expandOrCollapseText = () => {
@@ -60,8 +63,6 @@ class Landing extends Component {
     }
 
     render() {
-        const instagramFeed = this.props.instagramFeed.instagramFeed;
-
         return (
             <div>
                 {/* Desktop */}
@@ -102,30 +103,18 @@ class Landing extends Component {
                         </Grid.Column>
                         {/* Instagram feed */}
                         <Grid.Column width={6}>
-                            <Grid columns="one" id="instagram-feed">
-                                {instagramFeed.map((photo, index) => {
-                                    return (
-                                        <Grid.Column as={Responsive} minWidth={768} key={index}>
-                                            <Image 
-                                                as="a"
-                                                href={photo.link} 
-                                                src={photo.images.low_resolution.url} 
-                                                id="instagram-photo"
-                                            />
-                                            <div className="instagram-photo-stats">
-                                                <div className="instagram-photo-likes">
-                                                    <Icon id="heart-icon" name="like" />
-                                                    {photo.likes.count}
-                                                </div>
-                                                <div className="instagram-username">{photo.user.username}</div>
-                                                {
-                                                    photo.caption ? 
-                                                        <div className="instagram-photo-caption">{photo.caption.text}</div> : null
-                                                }
-                                            </div>
-                                        </Grid.Column>
-                                    )
-                                })}
+                            <Grid columns="one">
+                                {/* gets the latest Instagram post url from the api */}
+                                {this.state.latestInstagramPost != '' ? 
+                                    <InstagramEmbed
+                                    className="instagram-feed"    
+                                    url={this.state.latestInstagramPost}
+                                        maxWidth={320}
+                                        hideCaption={false}
+                                        containerTagName='div'
+                                        injectScript
+                                    />
+                                : '' }
                             </Grid>
 
                             {/* Twitter feed */}
@@ -191,7 +180,7 @@ class Landing extends Component {
                     {/* Instagram feed */}
                     <Grid.Row>
                         <Grid.Column width={16} id="instagram-feed">
-                            {instagramFeed.map((photo, index) => {
+                            {/* {instagramFeed.map((photo, index) => {
                                 return (
                                     <Grid.Row as={Responsive} key={index}>
                                         <Image 
@@ -213,7 +202,7 @@ class Landing extends Component {
                                         </div>
                                     </Grid.Row>
                                 )
-                            })}
+                            })} */}
                         </Grid.Column>
                     </Grid.Row>
 

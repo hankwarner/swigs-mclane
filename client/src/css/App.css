@@ -53,13 +53,11 @@
         margin-left: 40%;
     }
 
-    #instagram-feed {
-        width: 75%;
-        height: 500px;
+    .instagram-feed {
         padding-left: 15%;
         padding-right: 8%;
         margin-bottom: 10%;
-        margin-left: 11%;
+        margin-left: 19%;
         background-color: white;
         overflow: scroll;
     }

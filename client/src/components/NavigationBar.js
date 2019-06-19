@@ -6,10 +6,13 @@ import {
     Segment,
     Container,
     Menu,
-    Icon
+    Icon,
+    Image
 } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { getMenuItems, setActiveMenuItem } from '../actions/menuActions';
+
+const images = require.context('../../public/images', true);
 
 class NavigationBar extends Component {
     state = {
@@ -50,6 +53,16 @@ class NavigationBar extends Component {
                                         </Link>
                                     )}
                                 </Container>
+                                <Menu.Item position="right">
+                                    <Image 
+                                        as={Link} 
+                                        to="home" 
+                                        src={images('./swigs_mclane_logo_white.png')}
+                                        name="home"
+                                        onClick={(e, name) => this.handleItemClick(e, name)}
+                                        size='tiny' 
+                                    />
+                                </Menu.Item>
                                 <Menu.Item href="https://itunes.apple.com/us/artist/swigs-mclane/1300061776" position="right">
                                     <Icon name='apple' />
                                 </Menu.Item>

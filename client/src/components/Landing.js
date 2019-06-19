@@ -11,6 +11,7 @@ import {
 import { connect } from 'react-redux';
 import { setInstagramFeed, setInstagramLoading, setTwitterFeed, setTwitterLoading } from '../actions/landingActions';
 import Instafeed from 'instafeed.js';
+import { Timeline } from 'react-twitter-widgets';
 
 const images = require.context('../../public/images', true);
 
@@ -32,9 +33,6 @@ class Landing extends Component {
             }
         });
         instagramFeed.run();
-
-        // call Twitter API
-        this.props.setTwitterFeed();
     }
 
     expandOrCollapseText = () => {
@@ -63,7 +61,6 @@ class Landing extends Component {
 
     render() {
         const instagramFeed = this.props.instagramFeed.instagramFeed;
-        const twitterFeed = this.props.twitterFeed.twitterFeed;
 
         return (
             <div>
@@ -138,24 +135,11 @@ class Landing extends Component {
                                 </Header>
                                 <hr className="landing-side-panel-dividers"></hr>
                                 <Grid.Column id="twitter-feed">
-                                    <a className="twitter-timeline" href="https://twitter.com/suavo33">Tweets by @suavo33</a>
+                                    <Timeline 
+                                        dataSource = {{sourceType: "profile", screenName: "suavo33"}}
+                                    />
                                 </Grid.Column>
                             </Grid.Row>
-                            {/* keeping this in case I need to build my own Twitter widget */}
-                            {/* <Grid columns="one" >
-                                <h3 className="tweets-by-sauvo">
-                                    <Icon name="twitter" size="large" />
-                                    Tweets by <a href="https://twitter.com/suavo33">@sauvo33</a>
-                                </h3>
-                                {twitterFeed.map(tweet => {
-                                    return (
-                                        <Grid.Column as={Responsive} minWidth={768}>
-                                            <Image id="tweet-profile-image" src={tweet.user.profile_image_url_https} />
-                                            <div className="tweet-text">{tweet.text}</div>
-                                        </Grid.Column>
-                                    )
-                                })}
-                            </Grid> */}
                         </Grid.Column>
                     </Grid.Row>
                 </Responsive>
@@ -243,7 +227,10 @@ class Landing extends Component {
                     </Grid.Row>
                     {/* Twitter feed */}
                     <Grid columns="one" id="twitter-feed">
-                        <a className="twitter-timeline" href="https://twitter.com/suavo33">Tweets by @suavo33</a>
+                        <Timeline 
+                            className="twitter-timeline"
+                            dataSource = {{sourceType: "profile", screenName: "suavo33"}}
+                        />
                     </Grid>
                 </Responsive>
             </div>

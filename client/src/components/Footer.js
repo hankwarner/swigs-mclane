@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import {
     Responsive,
     Grid,
-    Icon
+    Icon,
+    Image   
 } from 'semantic-ui-react';
+
+const images = require.context('../../public/images', true);
 
 class Footer extends Component {
     render() {        
@@ -12,6 +15,12 @@ class Footer extends Component {
                 <Grid as={Responsive}>
                     <Grid.Row className="footer">
                         <Grid.Column width={16}>
+                            <Image 
+                                src={images('./swigs_mclane_logo_white.png')}
+                                name="home"
+                                onClick={(e, name) => this.handleItemClick(e, name)}
+                                size='small' 
+                            />
                             <a 
                                 href="https://open.spotify.com/artist/2pmvrHTpCslih7BtQ4Y9uc?si=s6rRz8O6SWikcHVqH3xkqw" 
                                 className="footer-icon">
